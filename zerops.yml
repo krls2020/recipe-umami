@@ -15,15 +15,16 @@ zerops:
           cd umami          
           yarn install
           yarn build
-      deploy: 
+      deploy:
         - ./umami/.next/standalone/~
-        - ./umami/.next/static/
-        - ./umami/public/
-        - ./umami/prisma/
-        - ./umami/next.config.js
-        - ./umami/package.json
-        - ./umami/yarn.lock
-        - ./umami/node_modules/
+        - ./umami/~.next/static/
+        - ./umami/~public/
+        - ./umami/~scripts/
+        - ./umami/~prisma/
+        - ./umami/~next.config.js
+        - ./umami/~package.json
+        - ./umami/~yarn.lock
+        - ./umami/~node_modules/
     run:
       start: yarn start
       ports:
