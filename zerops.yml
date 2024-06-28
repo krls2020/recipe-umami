@@ -2,7 +2,10 @@ zerops:
   - setup: umami
     build:
       base: nodejs@18
+      envVariables:
+        APP_SECRET: <@generateRandomString(<64>)>
       buildCommands:
+        - apk add git
         - git clone https://github.com/umami-software/umami.git
         - npm install -g yarn@1.22.10 --force
         - | 
@@ -25,11 +28,14 @@ zerops:
       prepareCommands:
         - npm install -g yarn@1.22.10 --force
       start: NODE_ENV=production yarn start-docker
+      ports:
+        - port: 3000
+          httpSupport: true
       healthCheck:
         httpGet:
           port: 3000
           path: /api/heartbeat
-    envVariables:
-      DATABASE_TYPE: postgresql
-      DATABASE_URL: ${db_connectionString}/${db_hostname}
-      NEXT_TELEMETRY_DISABLED: "1"
+      envVariables:
+        DATABASE_TYPE: postgresql
+        DATABASE_URL: ${db_connectionString}/${db_hostname}
+        NEXT_TELEMETRY_DISABLED: "1"
