@@ -16,7 +16,6 @@ zerops:
         - ./umami/.next/standalone/~
         - ./umami/~.next/static/
         - ./umami/~public/
-        - ./umami/~scripts/fr
         - ./umami/~prisma/
         - ./umami/~next.config.js
         - ./umami/~package.json
