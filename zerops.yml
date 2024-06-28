@@ -3,31 +3,26 @@ zerops:
     build:
       base: nodejs@18
       envVariables:
+        DATABASE_URL: ${db_connectionString}
         APP_SECRET: <@generateRandomString(<64>)>
       buildCommands:
         - apk add git
         - git clone https://github.com/umami-software/umami.git
-        - npm install -g yarn@1.22.10 --force
-        - | 
-          cd umami
-          git checkout tags/v2.11.2
-          yarn add npm-run-all
-          yarn install --frozen-lockfile
-          yarn build-docker
+        - cd umami
+        - yarn install
+        - yarn build
       deploy: 
         - ./umami/.next/standalone/~
         - ./umami/~.next/static/
         - ./umami/~public/
-        - ./umami/~scripts/
+        - ./umami/~scripts/fr
         - ./umami/~prisma/
         - ./umami/~next.config.js
         - ./umami/~package.json
         - ./umami/~yarn.lock
         - ./umami/~node_modules/
     run:
-      prepareCommands:
-        - npm install -g yarn@1.22.10 --force
-      start: NODE_ENV=production yarn start-docker
+      start: yarn start
       ports:
         - port: 3000
           httpSupport: true
@@ -36,6 +31,6 @@ zerops:
           port: 3000
           path: /api/heartbeat
       envVariables:
-        DATABASE_TYPE: postgresql
-        DATABASE_URL: ${db_connectionString}/${db_hostname}
+        NODE_ENV: production
+        DATABASE_URL: ${db_connectionString}
         NEXT_TELEMETRY_DISABLED: "1"
