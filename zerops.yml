@@ -14,22 +14,22 @@ zerops:
           yarn build
       deploy: 
         - ./umami/.next/standalone/~
-        - ./umami/~.next/static/
-        - ./umami/~public/
-        - ./umami/~prisma/
-        - ./umami/~next.config.js
-        - ./umami/~package.json
-        - ./umami/~yarn.lock
-        - ./umami/~node_modules/
+        - ./umami/.next/static/
+        - ./umami/public/
+        - ./umami/prisma/
+        - ./umami/next.config.js
+        - ./umami/package.json
+        - ./umami/yarn.lock
+        - ./umami/node_modules/
     run:
       start: yarn start
       ports:
         - port: 3000
           httpSupport: true
-      healthCheck:
-        httpGet:
-          port: 3000
-          path: /api/heartbeat
+#      healthCheck:
+#        httpGet:
+#          port: 3000
+#          path: /api/heartbeat
       envVariables:
         NODE_ENV: production
         DATABASE_URL: ${db_connectionString}
