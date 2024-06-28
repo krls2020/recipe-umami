@@ -8,9 +8,10 @@ zerops:
       buildCommands:
         - apk add git
         - git clone https://github.com/umami-software/umami.git
-        - cd umami
-        - yarn install
-        - yarn build
+        - |
+          cd umami
+          yarn install
+          yarn build
       deploy: 
         - ./umami/.next/standalone/~
         - ./umami/~.next/static/
