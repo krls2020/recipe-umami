@@ -6,6 +6,8 @@ zerops:
         DATABASE_URL: ${db_connectionString}
         APP_SECRET: <@generateRandomString(<64>)>
       buildCommands:
+        - zsc scale ram max 10m
+        - zsc scale cpu max 10m
         - apk add git
         - git clone https://github.com/umami-software/umami.git
         - |
