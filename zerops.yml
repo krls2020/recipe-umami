@@ -7,6 +7,7 @@ zerops:
         APP_SECRET: <@generateRandomString(<64>)>
       buildCommands:
         - apk add git
+        - npm install -g yarn
         - git clone https://github.com/umami-software/umami.git
         - cd umami
         - yarn install
