@@ -24,6 +24,9 @@ zerops:
         - ./umami/~yarn.lock
         - ./umami/~node_modules/
     run:
+      envVariables:
+        NODE_ENV: production
+        DATABASE_URL: $db_connectionString    
       prepareCommands:
         - npm install -g yarn@1.22.10 --force
       start: sudo yarn npm-run-all update-tracker start-server
@@ -34,7 +37,4 @@ zerops:
         httpGet:
           port: 3000
           path: /api/heartbeat
-      envVariables:
-        NODE_ENV: production
-        DATABASE_URL: $db_connectionString
-        NEXT_TELEMETRY_DISABLED: "1"
+
