@@ -29,7 +29,7 @@ zerops:
         DATABASE_URL: $db_connectionString    
       prepareCommands:
         - npm install -g yarn@1.22.10 --force
-      start: sudo yarn npm-run-all update-tracker start-server
+      start: yarn start-docker
       ports:
         - port: 3000
           httpSupport: true
