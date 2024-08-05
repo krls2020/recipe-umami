@@ -24,6 +24,8 @@ zerops:
         - ./umami/~yarn.lock
         - ./umami/~node_modules/
     run:
+      prepareCommands:
+        - npm install
       start: sudo yarn start
       ports:
         - port: 3000
