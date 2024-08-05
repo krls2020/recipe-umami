@@ -24,6 +24,8 @@ zerops:
         - ./umami/~yarn.lock
         - ./umami/~node_modules/
     run:
+      envVariables:
+        DATABASE_URL: ${db_connectionString}/${db_hostname}    
       prepareCommands:
         - npm install -g yarn@1.22.10 --force
       start: sudo yarn start-docker
