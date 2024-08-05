@@ -26,7 +26,7 @@ zerops:
     run:
       prepareCommands:
         - npm install -g yarn@1.22.10 --force
-      start: sudo yarn start
+      start: sudo yarn start-docker
       ports:
         - port: 3000
           httpSupport: true
