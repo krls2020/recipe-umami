@@ -24,8 +24,6 @@ zerops:
         - ./umami/~yarn.lock
         - ./umami/~node_modules/
     run:
-      envVariables:
-        DATABASE_URL: ${db_connectionString}/${db_hostname}    
       prepareCommands:
         - npm install -g yarn@1.22.10 --force
       start: sudo yarn start-docker
@@ -38,5 +36,5 @@ zerops:
           path: /api/heartbeat
       envVariables:
         NODE_ENV: production
-        DATABASE_URL: ${db_connectionString}
+        DATABASE_URL: ${db_connectionString}/${db_hostname}    
         NEXT_TELEMETRY_DISABLED: "1"
