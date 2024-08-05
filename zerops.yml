@@ -26,11 +26,11 @@ zerops:
         - ./umami/~node_modules/
     run:
       prepareCommands:
-        - yarn global add pm2
+        - sudo yarn global add pm2
       start:
-        - pm2 start yarn --name umami -- start
-        - pm2 startup
-        - pm2 save
+        - sudo pm2 start yarn --name umami -- start
+        - sudo pm2 startup
+        - sudo pm2 save
       ports:
         - port: 3000
           httpSupport: true
