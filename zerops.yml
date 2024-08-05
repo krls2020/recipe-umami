@@ -13,7 +13,6 @@ zerops:
         - |          
           cd umami          
           yarn install
-#          npx update-browserslist-db@latest
           yarn build
       deploy:
         - ./umami/.next/standalone/~
