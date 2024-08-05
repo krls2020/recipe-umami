@@ -3,7 +3,7 @@ zerops:
     build:
       base: nodejs@18
       envVariables:
-        DATABASE_URL: ${db_connectionString}/${db_hostname}
+        DATABASE_URL: $db_connectionString
       buildCommands:
         - zsc scale ram max 10m
         - zsc scale cpu max 10m
@@ -36,5 +36,5 @@ zerops:
           path: /api/heartbeat
       envVariables:
         NODE_ENV: production
-        DATABASE_URL: ${db_connectionString}/${db_hostname}    
+        DATABASE_URL: $db_connectionString
         NEXT_TELEMETRY_DISABLED: "1"
