@@ -26,8 +26,11 @@ zerops:
         - ./umami/~node_modules/
     run:
       prepareCommands:
-        - npm install -g yarn@1.22.10 --force
-      start: yarn start
+        - yarn global add pm2
+      start:
+        - pm2 start yarn --name umami -- start
+        - pm2 startup
+        - pm2 save
       ports:
         - port: 3000
           httpSupport: true
